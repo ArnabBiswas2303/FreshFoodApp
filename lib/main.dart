@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import './screens/meal_detail_screen.dart';
 import './screens/categories_meals_screen.dart';
@@ -14,8 +15,18 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.lightGreen,
         fontFamily: 'Raleway',
-        accentColor: Colors.amber,
-        // canvasColor: Color.fromRGBO(255, 254, 229, 1),
+        accentColor: Colors.orange,
+        appBarTheme: AppBarTheme(
+          textTheme: TextTheme(
+            title: GoogleFonts.ubuntu(
+              color: Colors.white,
+              fontSize: 23,
+            ),
+          ),
+          iconTheme: IconThemeData(
+            color: Colors.white,
+          ),
+        ),
         textTheme: TextTheme(
           body1: TextStyle(
             color: Color.fromRGBO(20, 51, 51, 1),
