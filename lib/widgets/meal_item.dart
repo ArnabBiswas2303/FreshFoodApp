@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-
-import '../models/meal.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../models/meal.dart';
+import '../screens/meal_detail_screen.dart';
+
 class MealIteam extends StatelessWidget {
+  final String id;
   final String title;
   final String imageUrl;
   final int duration;
@@ -11,6 +13,7 @@ class MealIteam extends StatelessWidget {
   final Affordability affordability;
 
   MealIteam({
+    @required this.id,
     @required this.title,
     @required this.imageUrl,
     @required this.affordability,
@@ -44,12 +47,17 @@ class MealIteam extends StatelessWidget {
     }
   }
 
-  void selectMeal() {}
+  void selectMeal(BuildContext ctx) {
+    Navigator.of(ctx).pushNamed(
+      MealDetailScreen.routeName,
+      arguments: id,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: selectMeal,
+      onTap: () => selectMeal(context),
       borderRadius: BorderRadius.circular(10),
       child: Card(
         shape: RoundedRectangleBorder(
