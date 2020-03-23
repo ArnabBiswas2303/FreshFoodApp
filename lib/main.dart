@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 import './screens/categories_meals_screen.dart';
 import './screens/categories_screen.dart';
