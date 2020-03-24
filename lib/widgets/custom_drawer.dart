@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import '../screens/filters_screen.dart';
+
 class CustomDrawer extends StatelessWidget {
   const CustomDrawer({Key key}) : super(key: key);
 
-  Widget _buildListTile(String tileName, IconData tileIcon) {
+  Widget _buildListTile(
+      String tileName, IconData tileIcon, Function routeHandler) {
     return ListTile(
       leading: Icon(
         tileIcon,
@@ -18,7 +21,7 @@ class CustomDrawer extends StatelessWidget {
           fontWeight: FontWeight.bold,
         ),
       ),
-      onTap: () {},
+      onTap: routeHandler,
     );
   }
 
@@ -45,8 +48,17 @@ class CustomDrawer extends StatelessWidget {
           SizedBox(
             height: 9,
           ),
-          _buildListTile("Meals", Icons.restaurant),
-          _buildListTile("Filters", Icons.settings),
+          _buildListTile(
+            "Meals",
+            Icons.restaurant,
+            () => Navigator.of(context).pushReplacementNamed('/'),
+          ),
+          _buildListTile(
+            "Filters",
+            Icons.settings,
+            () => Navigator.of(context)
+                .pushReplacementNamed(FiltersScreen.routeName),
+          ),
         ],
       ),
     );
