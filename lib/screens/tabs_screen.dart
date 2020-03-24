@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../widgets/custom_drawer.dart';
 
 import './favourites_screen.dart';
 import './categories_screen.dart';
@@ -25,6 +26,7 @@ class _TabsScreeenState extends State<TabsScreeen> {
       appBar: AppBar(
         title: Text("FreshFood"),
       ),
+      drawer: CustomDrawer(),
       body: _pages[_pagesIndex],
       bottomNavigationBar: BottomNavigationBar(
         onTap: _selectPage,

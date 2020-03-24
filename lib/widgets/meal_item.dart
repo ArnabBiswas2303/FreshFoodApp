@@ -74,11 +74,14 @@ class MealIteam extends StatelessWidget {
                     topLeft: const Radius.circular(10),
                     topRight: const Radius.circular(10),
                   ),
-                  child: Image.network(
-                    imageUrl,
-                    height: 250,
-                    width: double.infinity,
-                    fit: BoxFit.cover,
+                  child: Hero(
+                    tag: id,
+                    child: Image.network(
+                      imageUrl,
+                      height: 250,
+                      width: double.infinity,
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
                 Positioned(
