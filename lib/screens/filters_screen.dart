@@ -3,16 +3,28 @@ import '../widgets/custom_drawer.dart';
 
 class FiltersScreen extends StatefulWidget {
   static const routeName = '/filters';
+  final Function setFilters;
+  final Map<String, bool> filters;
+  FiltersScreen(this.setFilters, this.filters);
 
   @override
   _FiltersScreenState createState() => _FiltersScreenState();
 }
 
 class _FiltersScreenState extends State<FiltersScreen> {
-  var _isGlutenFree = false;
-  var _isVegetarian = false;
-  var _isVegan = false;
-  var _isLactosFree = false;
+  var _isGlutenFree;
+  var _isLactoseFree;
+  var _isVegetarian;
+  var _isVegan;
+
+  @override
+  void initState() {
+    super.initState();
+    _isGlutenFree = widget.filters['gluten'];
+    _isLactoseFree = widget.filters['lactose'];
+    _isVegetarian = widget.filters['vegetarian'];
+    _isVegan = widget.filters['vegan'];
+  }
 
   Widget _buildSwitchList(
     String title,
@@ -33,6 +45,20 @@ class _FiltersScreenState extends State<FiltersScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Filters'),
+        actions: <Widget>[
+          IconButton(
+            icon: Icon(Icons.save),
+            onPressed: () {
+              Map<String, bool> filterValue = {
+                'gluten': _isGlutenFree,
+                'lactose': _isLactoseFree,
+                'vegetarian': _isVegetarian,
+                'vegan': _isVegan,
+              };
+              widget.setFilters(filterValue);
+            },
+          ),
+        ],
       ),
       drawer: const CustomDrawer(),
       body: Column(
@@ -59,12 +85,12 @@ class _FiltersScreenState extends State<FiltersScreen> {
             ),
           ),
           _buildSwitchList(
-            'Lactose-Free',
+            'Lactos-Free',
             'Only include lactose-free meals.',
-            _isLactosFree,
+            _isLactoseFree,
             (newValue) => setState(
               () {
-                _isLactosFree = newValue;
+                _isLactoseFree = newValue;
               },
             ),
           ),
