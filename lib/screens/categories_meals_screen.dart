@@ -37,7 +37,7 @@ class _CategoriesMealsScreenState extends State<CategoriesMealsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("categoryTitle"),
+        title: Text(categoryTitle),
       ),
       body: ListView.builder(
         itemBuilder: (ctx, index) {
